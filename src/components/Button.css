@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap");
+
+:root {
+  /* Palette: #FCF8F8, #FBEFEF, #F9DFDF, #F5AFAF */
+  --background-color: #FCF8F8;
+  --color-gray-100: #FBEFEF;
+  --color-gray-200: #F9DFDF;
+  --color-gray-300: #F5AFAF;
+  --color-light: #ffffff;
+  --color-pink-100: #F5AFAF;
+  --color-pink-200: #F9DFDF;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Cal Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+/* Scoped page container instead of styling body globally */
+.button-page {
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--background-color);
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  row-gap: 2rem;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Horizontal row that reuses the Button styles */
+.buttons-row-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  background-color: var(--color-gray-300);
+}
+
+.buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons-row-title {
+  margin: 0.2rem 0 1.5rem 0;
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--background-color);
+}
+
+.buttons-message {
+  margin: 1.5rem auto 0 auto;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--background-color);
+  max-width: 32rem;
+  padding: 0 1rem;
+}
+
+.buttons-row-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* When reusing the full Button component inside a row,
+   shrink its container so it fits horizontally */
+.buttons-row .button-page {
+  width: auto;
+  height: auto;
+  padding: 0;
+  background-color: transparent;
+  row-gap: 0;
+}
+
+/* Smaller title when buttons are in a horizontal row */
+.buttons-row .title {
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  margin: 0 0 0.5rem 0;
+  color: var(--background-color);
+}
+
+.wrapper {
+  position: relative;
+  width: 140px;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  background-color: var(--color-gray-200);
+  box-shadow: inset 0 0 16px var(--color-gray-300);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.button {
+  position: relative;
+  width: 120px;
+  aspect-ratio: 1/1;
+  margin: 0;
+  border: 2px solid var(--color-gray-300);
+  border-radius: 8px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  background-image: conic-gradient(
+    var(--color-gray-100) 45deg,
+    var(--color-gray-200) 45deg,
+    var(--color-gray-100) 90deg,
+    var(--color-gray-200) 135deg,
+    var(--color-gray-100) 135deg,
+    var(--color-gray-300) 135deg,
+    var(--color-gray-300) 225deg,
+    var(--color-gray-200) 225deg,
+    var(--color-gray-200) 315deg,
+    var(--color-gray-100) 315deg
+  );
+  transform-origin: 50% 50%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  display: flex;
+  cursor: pointer;
+}
+
+.button:active {
+  transform: scale(0.9);
+  box-shadow: 0 0 4px 2px var(--color-light);
+}
+
+.button:active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50% -50%);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    var(--color-gray-200),
+    var(--color-light),
+    var(--color-gray-300)
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.button::before {
+  position: absolute;
+  width: 82%;
+  aspect-ratio: 1/1;
+  border-radius: 4px;
+  background-image: linear-gradient(
+    var(--color-gray-100),
+    var(--color-gray-200)
+  );
+  font-size: 60px;
+  box-shadow: inset -4px 4px 4px var(--color-light);
+  justify-content: center;
+  align-items: center;
+  flex-flow: nowrap;
+  display: flex;
+}
+
+.button:active::before {
+  box-shadow: inset -4px -4px 4px var(--color-light);
+  background-image: linear-gradient(
+    var(--color-gray-200),
+    var(--color-gray-100)
+  );
+}
+
+.button.heart::before {
+  content: "\f004";
+  color: var(--color-pink-100);
+}
+
+.title {
+  margin: 0;
+  color: var(--color-pink-100);
+  font-size: clamp(4rem, 20vw, 10rem);
+  z-index: 200;
+}
